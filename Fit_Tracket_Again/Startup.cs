@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Fit_Tracket_Again.Models;
 
 namespace Fit_Tracket_Again
 {
@@ -33,6 +35,9 @@ namespace Fit_Tracket_Again
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<Fit_Tracket_AgainContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Fit_Tracket_AgainContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
